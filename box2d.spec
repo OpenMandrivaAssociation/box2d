@@ -10,7 +10,7 @@ URL:		http://www.box2d.org
 Source:		http://box2d.googlecode.com/files/%{oname}_v%{version}.zip
 Patch1:		box2d-2.2.1-cmake.patch
 BuildRequires:	cmake
-BuildRequires:	libglui2-devel
+BuildRequires:	%{_lib}glui2-devel
 %if %{mdvver} < 201200
 BuildRequires:	mesaglut-devel
 %else
