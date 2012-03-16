@@ -1,8 +1,11 @@
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
+
 %define		oname	Box2D
 
 Name:		box2d
 Version:	2.2.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	A 2D physics engine for games
 Group:		System/Libraries
 License:	BSD-like
@@ -11,11 +14,6 @@ Source:		http://box2d.googlecode.com/files/%{oname}_v%{version}.zip
 Patch1:		box2d-2.2.1-cmake.patch
 BuildRequires:	cmake
 BuildRequires:	%{_lib}glui2-devel
-%if %{mdvver} < 201200
-BuildRequires:	mesaglut-devel
-%else
-BuildRequires:	freeglut-devel
-%endif
 BuildRequires:	X11-devel
 
 %description
