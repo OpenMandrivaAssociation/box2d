@@ -16,6 +16,7 @@ BuildRequires:	cmake ninja
 BuildRequires:	glfw-devel
 BuildRequires:	pkgconfig(glut)
 BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(glew)
 
 %description
 Box2D is a 2D rigid body simulation library for games. Programmers can use it
