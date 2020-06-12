@@ -5,15 +5,15 @@
 
 Summary:	A 2D physics engine for games
 Name:		box2d
-Version:	2.2.1
-Release:	4
+Version:	2.3.1
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.box2d.org
-Source:		http://box2d.googlecode.com/files/%{oname}_v%{version}.zip
-Patch1:		box2d-2.2.1-cmake.patch
-BuildRequires:	cmake
-BuildRequires:	%{_lib}glui2-devel
+Source:		https://github.com/erincatto/box2d/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:		https://src.fedoraproject.org/rpms/Box2D/raw/master/f/Box2D-2.3.1-cmake.patch
+BuildRequires:	cmake ninja
+BuildRequires:	glfw-devel
 BuildRequires:	pkgconfig(glut)
 BuildRequires:	pkgconfig(x11)
 
@@ -44,23 +44,22 @@ with the b2 prefix. Hopefully this is sufficient to avoid name clashing with
 your game engine.
 
 %files devel
-%doc License.txt Readme.txt Documentation
+%doc Box2D/License.txt Box2D/Readme.txt Box2D/Documentation
 %{_libdir}/lib*.a
 %{_libdir}/%{oname}
 %{_includedir}/%{oname}
+%{_libdir}/cmake/Box2D
 
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q -n %{oname}_v%{version}
-%patch1 -p1
-# XXX incorrect dates in zipfile
-find . -type f -exec touch {} \;
+%autosetup -p1
+cd Box2D
+%cmake -G Ninja
 
 %build
-%cmake
-%make
+%ninja_build -C Box2D/build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C Box2D/build
 
