@@ -27,6 +27,7 @@ BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(xcursor)
+BuildRequires:	pkgconfig(xi)
 
 %description
 Box2D is a 2D rigid body simulation library for games. Programmers can use it
