@@ -1,8 +1,5 @@
 %define major 2
 
-%define _enable_debug_packages %{nil}
-%define debug_package %{nil}
-
 # Make sure we don't have non-PIC code in a static library...
 %global optflags %{optflags} -fPIC
 
