@@ -9,13 +9,14 @@
 Summary:	A 2D physics engine for games
 Name:		box2d
 Version:	2.4.1
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.box2d.org
 Source:		https://github.com/erincatto/box2d/archive/v%{version}/%{name}-%{version}.tar.gz
 #Patch0:		https://src.fedoraproject.org/rpms/Box2D/raw/master/f/Box2D-2.3.1-cmake.patch
-BuildRequires:	cmake ninja
+BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:	glfw-devel
 BuildRequires:	pkgconfig(glut)
 BuildRequires:	pkgconfig(x11)
