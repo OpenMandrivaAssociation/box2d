@@ -9,7 +9,7 @@
 Summary:	A 2D physics engine for games
 Name:		box2d
 Version:	2.4.1
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.box2d.org
