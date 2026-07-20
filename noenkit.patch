@@ -1,0 +1,28 @@
+diff -U 3 -dHrN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2025-06-04 02:50:24.000000000 +0200
++++ b/CMakeLists.txt	2026-06-06 11:59:54.124949920 +0200
+@@ -85,14 +85,16 @@
+ 
+ 		# Task system used in tests and samples
+ 		set(ENKITS_BUILD_EXAMPLES OFF CACHE BOOL "Build enkiTS examples")
+-		FetchContent_Declare(
+-			enkits
+-			GIT_REPOSITORY https://github.com/dougbinks/enkiTS.git
+-			GIT_TAG master
+-			GIT_SHALLOW TRUE
+-			GIT_PROGRESS TRUE
+-		)
+-		FetchContent_MakeAvailable(enkits)
++		if(ENKITS_BUILD_EXAMPLES)
++			FetchContent_Declare(
++				enkits
++				GIT_REPOSITORY https://github.com/dougbinks/enkiTS.git
++				GIT_TAG master
++				GIT_SHALLOW TRUE
++				GIT_PROGRESS TRUE
++			)
++			FetchContent_MakeAvailable(enkits)
++		endif()
+ 
+ 		add_subdirectory(shared)
+ 	endif()
