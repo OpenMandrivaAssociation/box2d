@@ -15,6 +15,7 @@ License:	BSD
 Url:		https://www.box2d.org
 Source:		https://github.com/erincatto/box2d/archive/v%{version}/%{name}-%{version}.tar.gz
 #Patch0:		https://src.fedoraproject.org/rpms/Box2D/raw/master/f/Box2D-2.3.1-cmake.patch
+Patch1:			noenkit.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	glfw-devel
