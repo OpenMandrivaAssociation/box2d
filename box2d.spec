@@ -1,4 +1,4 @@
-%define major 2
+%define major 3
 
 # Make sure we don't have non-PIC code in a static library...
 %global optflags %{optflags} -fPIC
@@ -8,13 +8,14 @@
 
 Summary:	A 2D physics engine for games
 Name:		box2d
-Version:	2.4.1
-Release:	3
+Version:	3.1.1
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://www.box2d.org
 Source:		https://github.com/erincatto/box2d/archive/v%{version}/%{name}-%{version}.tar.gz
 #Patch0:		https://src.fedoraproject.org/rpms/Box2D/raw/master/f/Box2D-2.3.1-cmake.patch
+Patch1:			noenkit.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	glfw-devel
@@ -88,9 +89,13 @@ your game engine.
 	-DBOX2D_BUILD_SHARED:BOOL=ON \
 	-DBOX2D_BUILD_UNIT_TESTS:BOOL=OFF \
 	-DBOX2D_BUILD_TESTBED:BOOL=OFF \
+	-DBOX2D_SAMPLES=OFF \
+	-DCMAKE_SHARED_LINKER_FLAGS="-lm" \
+	-DCMAKE_C_STANDARD_LIBRARIES="-lm" \
 	-G Ninja
 
 %build
+export LDFLAGS="$LDFLAGS -lm"
 %ninja_build -C build
 
 %install
