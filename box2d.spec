@@ -93,6 +93,7 @@ your game engine.
 	-G Ninja
 
 %build
+export LDFLAGS="$LDFLAGS -lm"
 %ninja_build -C build
 
 %install
