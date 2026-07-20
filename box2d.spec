@@ -1,4 +1,4 @@
-%define major 2
+%define major 3
 
 # Make sure we don't have non-PIC code in a static library...
 %global optflags %{optflags} -fPIC
