@@ -9,7 +9,7 @@
 Summary:	A 2D physics engine for games
 Name:		box2d
 Version:	3.1.1
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 Url:		https://www.box2d.org
@@ -79,6 +79,7 @@ your game engine.
 %{_includedir}/box2d
 %{_libdir}/lib*.so
 %{_libdir}/cmake/box2d
+%{_libdir}/pkgconfig/box2d.pc
 
 #----------------------------------------------------------------------------
 
@@ -100,3 +101,21 @@ export LDFLAGS="$LDFLAGS -lm"
 
 %install
 %ninja_install -C build
+
+# Add pkgconfig file
+mkdir %{buildroot}%{_libdir}/pkgconfig
+
+cat > box2d.pc << 'EOF'
+prefix=%{_prefix}
+exec_prefix=${prefix}
+libdir=%{_libdir}
+includedir=%{_includedir}
+
+Name: box2d
+Description: 2D physics engine
+Version: %{version}
+Libs: -L${libdir} -lbox2d
+Cflags: -I${includedir}/box2d
+EOF
+
+mv -f box2d.pc %{buildroot}%{_libdir}/pkgconfig/box2d.pc
